@@ -6,55 +6,64 @@
             <label>
                 Company
             </label>
-            <input type="text" placeholder="Company" name="company" value={{ $application->company }}>
+            <input type="text" placeholder="Company" name="company" value="{{ $application->company }}">
         </div>
         <div>
             <label>
                 Title
             </label>
-            <input type="text" placeholder="Title" name="title" value={{ $application->title }}>
+            <input type="text" placeholder="Title" name="title" value="{{ $application->title }}">
         </div>
         <div>
             <label>
                 Site
             </label>
-            <select name="site" value={{ $application->site }}>
-                <option value="linkedin">LinkedIn</option>
-                <option value="indeed">Indeed</option>
-                <option value="levels">Levels.fyi</option>
-                <option value="direct">direct</option>
+            @php
+                $site = $application->site;
+            @endphp
+            <select name="site">
+                <option value="linkedin" @selected($site === 'linkedin')>LinkedIn</option>
+                <option value="indeed" @selected($site === 'indeed')>Indeed</option>
+                <option value="levels" @selected($site === 'levels')>Levels.fyi</option>
+                <option value="direct" @selected($site === 'direct')>direct</option>
             </select>
         </div>
         <div>
             <label>
                 Cover Letter
             </label>
-            <input type="checkbox" placeholder="Cover letter" name="cover_letter" value={{ $application->cover_letter }}>
+            <input type="checkbox" placeholder="Cover letter" name="cover_letter" @checked($application->cover_letter)>
         </div>
         <div>
             <label>
                 Contacted
             </label>
-            <input type="checkbox" placeholder="Contacted" name="contacted" value={{ $application->contacted }}>
+            <input type="checkbox" placeholder="Contacted" name="contacted" @checked($application->contacted)>
         </div>
         <div>
             <label>
                 Application Type
             </label>
-            <select name="application_type" value={{ $application->application_type }}>
-                <option value="full">Full</option>
-                <option value="easy">Easy</option>
+            @php
+                $type = $application->application_type;
+            @endphp
+            <select name="application_type">
+                <option value="full" @selected($type === 'full')>Full</option>
+                <option value="easy" @selected($type === 'easy')>Easy</option>
             </select>
         </div>
         <div>
             <label>
                 Response
             </label>
-            <select name="response" value={{ $application->response }}>
-                <option value="none">None</option>
-                <option value="no interview">No Interview</option>
-                <option value="interview">Interview</option>
-                <option value="job offer">Job Offer</option>
+            @php
+                $response = $application->response;
+            @endphp
+            <select name="response">
+                <option value="none" @selected($response === 'none')>None</option>
+                <option value="no interview" @selected($response === 'no interview')>No Interview</option>
+                <option value="interview" @selected($response === 'interview')>Interview</option>
+                <option value="job offer" @selected($response === 'job offer')>Job Offer</option>
             </select>
         </div>
         <button type="submit">Update</button>

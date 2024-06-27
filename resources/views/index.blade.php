@@ -1,7 +1,7 @@
 <x-layout>
     <h1>Applications</h1>
     <h3>Add application</h3>
-    <form action="submit.php" method="post">
+    <form action="submit.php" method="post" autocomplete="off">
         <div>
             <label>
                 Company

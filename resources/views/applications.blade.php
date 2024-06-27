@@ -3,8 +3,8 @@
         All applications
     </x-slot>
     <h3>Applications</h3>
-    <form action="/applications" method="get">
-        <input type="text" placeholder="search" class="search" name="s" id="search-field"/>
+    <form action="/applications" method="get" autocomplete="off">
+        <input type="text" placeholder="search" class="search" name="s" id="search-field" autocomplete="off"/>
     </form>
     <ul id="search-results" class="hidden">
     </ul>
