@@ -60,6 +60,5 @@
             </div>
             <button type="submit">Add</button>
         </form>
-        <a href="/applications">View applications</a>
     </body>
 </x-layout>

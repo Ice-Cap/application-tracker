@@ -9,6 +9,15 @@
         <title>{{ $title ?? 'Applications' }}</title>
     </head>
     <body>
-        {{ $slot }}
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/applications">View All</a></li>
+                <li><a href="/applications/create">Add</a></li>
+            </ul>
+        </nav>
+        <main>
+            {{ $slot }}
+        </main>
     </body>
 </html>
