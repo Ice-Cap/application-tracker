@@ -19,8 +19,30 @@
             <th>Application Type</th>
             <th>Response</th>
             <th>Date Created</th>
+            <th>Id</th>
         </tr>
         @foreach ($applications as $application)
+            @php
+                $cover_letter = $application->cover_letter;
+                if ($cover_letter)
+                {
+                    $cover_letter = 'yes';
+                }
+                else
+                {
+                    $cover_letter = 'no';
+                }
+
+                $contacted = $application->contacted;
+                if ($contacted)
+                {
+                    $contacted = 'yes';
+                }
+                else
+                {
+                    $contacted = 'no';
+                }
+            @endphp
             <tr>
                 <td>
                     <a href="/applications/{{$application->id}}/edit">
@@ -29,11 +51,12 @@
                 </td>
                 <td>{{ $application->title }}</td>
                 <td>{{ $application->site }}</td>
-                <td>{{ $application->cover_letter }}</td>
-                <td>{{ $application->contacted }}</td>
+                <td>{{ $cover_letter }}</td>
+                <td>{{ $contacted }}</td>
                 <td>{{ $application->application_type }}</td>
                 <td>{{ $application->response }}</td>
                 <td>{{ $application->date_created }}</td>
+                <td>{{ $application->id }}</td>
             </tr>
         @endforeach
     </table>

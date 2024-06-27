@@ -17,11 +17,12 @@ class ApplicationController extends Controller
         {
             $applications = Application::where('company', 'LIKE', "%$search%")
                 ->orWhere('title', 'LIKE', "%$search%")
+                ->orderBy('id', 'desc')
                 ->get();
         }
         else
         {
-            $applications = Application::all()->all();
+            $applications = Application::all()->sortByDesc('id')->all();
         }
 
         return view('applications', ['applications' => $applications]);
