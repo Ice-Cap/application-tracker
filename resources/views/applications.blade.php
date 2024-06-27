@@ -22,7 +22,11 @@
         </tr>
         @foreach ($applications as $application)
             <tr>
-                <td>{{ $application->company }}</td>
+                <td>
+                    <a href="/applications/{{$application->id}}/edit">
+                        {{ $application->company }}
+                    </a>
+                </td>
                 <td>{{ $application->title }}</td>
                 <td>{{ $application->site }}</td>
                 <td>{{ $application->cover_letter }}</td>

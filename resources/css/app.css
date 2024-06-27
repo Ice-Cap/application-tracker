@@ -23,6 +23,14 @@ h4 {
     margin-bottom: 10px;
 }
 
+a {
+    text-decoration: none;
+    color: rgb(70, 120, 222);
+}
+a:hover {
+    text-decoration: underline;
+}
+
 button {
     background-color: var(--primary-color);
     color: #fff;
@@ -91,6 +99,10 @@ form {
     max-width: 300px;
 }
 
+form button[type="submit"] {
+    margin-top: 15px;
+}
+
 .search {
     max-width: 300px;
 }
@@ -120,4 +132,8 @@ form {
 }
 #search-results a:hover {
     background-color: #efefef;
+}
+
+main, body {
+    background-color: #fbfbfb;
 }

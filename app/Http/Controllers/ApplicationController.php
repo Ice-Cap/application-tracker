@@ -71,7 +71,13 @@ class ApplicationController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $application = Application::find($id);
+        if (!$application)
+        {
+            return response('Application not found', 404);
+        }
+
+        return view('edit-application', ['application' => $application]);
     }
 
     /**
