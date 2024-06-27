@@ -1,5 +1,5 @@
 :root {
-    --primary-color: rgb(231, 142, 82);
+    --primary-color: rgb(231, 139, 82);
     --text: #282828;
 }
 
@@ -108,7 +108,9 @@ form button[type="submit"] {
 }
 
 #search-results {
-    background-color: rgb(235, 235, 235);
+    background-color: rgb(240, 240, 240);
+    border: 1px solid rgb(221, 221, 221);
+    box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.2);
     list-style: none;
     position: absolute;
     width: 300px;
@@ -131,7 +133,7 @@ form button[type="submit"] {
     color: var(--text);
 }
 #search-results a:hover {
-    background-color: #efefef;
+    background-color: #fcfcfc;
 }
 
 main, body {
