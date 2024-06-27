@@ -1,0 +1,27 @@
+label {
+    display: block;
+    margin: 10px 0 5px;
+}
+
+input, select {
+    margin-bottom: 10px;
+}
+
+body {
+    margin: 30px;
+}
+
+table, th, td {
+    border: 1px solid #000;
+}
+table {
+    margin-top: 20px;
+    border-collapse: collapse;
+}
+th, td {
+    padding: 10px;
+}
+
+.hidden {
+    display: none;
+}
