@@ -10,10 +10,36 @@ class ApplicationController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $applications = Application::all()->all();
+        $search = $request->query('s', null);
+        if ($search)
+        {
+            $applications = Application::where('company', 'LIKE', "%$search%")
+                ->orWhere('title', 'LIKE', "%$search%")
+                ->get();
+        }
+        else
+        {
+            $applications = Application::all()->all();
+        }
+
         return view('applications', ['applications' => $applications]);
+    }
+
+    public function search(Request $request)
+    {
+        $search = $request->query('s', null);
+        if ($search)
+        {
+            $applications = Application::where('company', 'LIKE', "$search%")
+                ->orWhere('title', 'LIKE', "$search%")
+                ->get();
+
+            return $applications;
+        }
+
+        return [];
     }
 
     /**

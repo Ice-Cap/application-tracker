@@ -89,3 +89,20 @@ input[type="text"], select, textarea {
 form {
     max-width: 300px;
 }
+
+.search {
+    max-width: 300px;
+}
+
+#search-results {
+    background-color: rgb(235, 235, 235);
+    list-style: none;
+    padding: 5px;
+    position: absolute;
+    width: 300px;
+}
+
+#search-results li {
+    padding: 5px;
+    color: #282828;
+}
