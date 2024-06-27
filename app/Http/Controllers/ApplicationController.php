@@ -86,7 +86,28 @@ class ApplicationController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $input = $request->all();
+        if (!$input["title"] || !$input["company"])
+        {
+            return response('invalid input', 400);
+        }
+
+        $application = Application::find($id);
+        if (!$application)
+        {
+            return response('not found', 404);
+        }
+
+        $application->company = $input["company"];
+        $application->title = $input["title"];
+        $application->site = $input["site"];
+        $application->cover_letter = $input["cover_letter"] ?? false;
+        $application->contacted = $input["contacted"] ?? false;
+        $application->application_type = $input["application_type"];
+        $application->response = $input["response"];
+        $application->save();
+
+        return redirect('/applications/' . $id . '/edit');
     }
 
     /**

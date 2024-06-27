@@ -1,7 +1,9 @@
 <x-layout>
     <h1>{{ $application->company }} - {{ $application->title }}</h1>
     <h3>Edit application</h3>
-    <form action="submit.php" method="post">
+    <form action="/applications/{{$application->id}}" method="POST">
+        @csrf
+        @method('PUT')
         <div>
             <label>
                 Company

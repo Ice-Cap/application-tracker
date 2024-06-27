@@ -64,6 +64,12 @@
         const search = document.getElementById('search-field');
         const searchResults = document.getElementById('search-results');
 
+        window.addEventListener('click', (e) => {
+            if (!searchResults.classList.contains('hidden')) {
+                searchResults.classList.add('hidden')
+            }
+        });
+
         search.addEventListener('input', (e) => {
             const url = '/applications/search' + '?s=' + e.target.value;
             let result = fetch(url)
@@ -82,7 +88,6 @@
                     let htmlString = '';
                     data.forEach((item) => {
                         htmlString += `<li><a href="/applications?s=${item.company}">` + item.company + "</a></li>";
-                        console.log(htmlString)
                     });
                     searchResults.innerHTML = htmlString;
                 })
