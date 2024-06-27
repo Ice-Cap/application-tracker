@@ -54,7 +54,8 @@
                     }
                     let htmlString = '';
                     data.forEach((item) => {
-                        htmlString += "<li>" + item.company + "<li>";
+                        htmlString += `<li><a href="/applications?s=${item.company}">` + item.company + "</a></li>";
+                        console.log(htmlString)
                     });
                     searchResults.innerHTML = htmlString;
                 })
