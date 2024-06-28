@@ -56,7 +56,24 @@ class ApplicationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input = $request->all();
+        if (empty($input["title"]) || empty($input["company"]))
+        {
+            return response('invalid input', 400);
+        }
+
+        $application = new Application();
+
+        $application->company = $input["company"];
+        $application->title = $input["title"];
+        $application->site = $input["site"];
+        $application->cover_letter = $input["cover_letter"] ?? false;
+        $application->contacted = $input["contacted"] ?? false;
+        $application->application_type = $input["application_type"];
+        $application->response = $input["response"];
+        $application->save();
+
+        return redirect('/applications/' . $application->id . '/edit');
     }
 
     /**
