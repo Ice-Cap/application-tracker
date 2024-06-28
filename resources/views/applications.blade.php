@@ -19,7 +19,6 @@
             <th>Application Type</th>
             <th>Response</th>
             <th>Date Created</th>
-            <th>Id</th>
         </tr>
         @foreach ($applications as $application)
             @php
@@ -55,8 +54,7 @@
                 <td>{{ $contacted }}</td>
                 <td>{{ $application->application_type }}</td>
                 <td>{{ $application->response }}</td>
-                <td>{{ $application->date_created }}</td>
-                <td>{{ $application->id }}</td>
+                <td>{{ $application->created_at }}</td>
             </tr>
         @endforeach
     </table>

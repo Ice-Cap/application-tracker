@@ -39,6 +39,11 @@ button {
     border-radius: 5px;
 }
 
+button:hover {
+    background-color: rgb(221, 133, 79);
+    cursor: pointer;
+}
+
 label {
     display: block;
     margin: 10px 0 5px;
