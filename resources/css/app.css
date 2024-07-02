@@ -10,6 +10,10 @@
     font-family: Verdana, Geneva, Tahoma, sans-serif
 }
 
+main, body {
+    background-color: #fbfbfb;
+}
+
 h1 {
     margin-bottom: 30px;
 }
@@ -60,12 +64,18 @@ main {
 table, th, td {
     border: 1px solid #9e9e9e;
 }
+th {
+    background-color: #fae5d5;
+}
+tr:nth-child(odd) {
+    background-color: #f5f1ec;
+}
 table {
     margin-top: 20px;
     border-collapse: collapse;
 }
 th, td {
-    padding: 10px;
+    padding: 15px 10px;
 }
 
 .hidden {
@@ -141,6 +151,9 @@ form button[type="submit"] {
     background-color: #fcfcfc;
 }
 
-main, body {
-    background-color: #fbfbfb;
+.total-applications {
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 25px;
 }

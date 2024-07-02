@@ -8,7 +8,7 @@
     </form>
     <ul id="search-results" class="hidden">
     </ul>
-    <p>Total applications: {{ count($applications) }}</p>
+    <p class="total-applications">Total applications: {{ count($applications) }}</p>
     <table>
         <tr>
             <th>Company</th>
