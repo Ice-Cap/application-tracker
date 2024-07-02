@@ -13,19 +13,29 @@ class ApplicationController extends Controller
     public function index(Request $request)
     {
         $search = $request->query('s', null);
-        if ($search)
-        {
-            $applications = Application::where('company', 'LIKE', "%$search%")
-                ->orWhere('title', 'LIKE', "%$search%")
-                ->orderBy('id', 'desc')
-                ->get();
-        }
-        else
+        $response = $request->query('response', null);
+        if (!$search && !$response)
         {
             $applications = Application::all()->sortByDesc('id')->all();
+            return view('applications', ['applications' => $applications]);
         }
 
-        return view('applications', ['applications' => $applications]);
+        $applications = Application::where('company', 'LIKE', "%$search%")
+            ->orderBy('id', 'desc');
+
+        if ($response && $response !== 'any')
+        {
+            $applications = $applications->where('response', $response);
+        }
+
+        if ($search)
+        {
+            $applications = $applications->orWhere('title', 'LIKE', "%$search%");
+        }
+
+        $applications = $applications->get();
+
+        return view('applications', ['applications' => $applications, 'search' => $search, 'response' => $response]);
     }
 
     public function search(Request $request)

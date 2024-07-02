@@ -1,13 +1,35 @@
 <x-layout>
+    @php
+        $response = $response ?? null;
+        $search = $search ?? null;
+    @endphp
     <x-slot:title>
         All applications
     </x-slot>
     <h3>Applications</h3>
     <form action="/applications" method="get" autocomplete="off">
-        <input type="text" placeholder="search" class="search" name="s" id="search-field" autocomplete="off"/>
+        <input
+            type="text"
+            placeholder="search"
+            class="search" name="s"
+            id="search-field"
+            autocomplete="off"
+            value="{{ $search }}"
+        />
+        <ul id="search-results" class="hidden">
+        </ul>
+        <label>
+            Response
+        </label>
+        <select name="response">
+            <option value="any">Any</option>
+            <option value="none" @selected($response === 'none')>None</option>
+            <option value="no interview" @selected($response === 'no interview')>No Interview</option>
+            <option value="interview" @selected($response === 'interview')>Interview</option>
+            <option value="job offer" @selected($response === 'job offer')>Job Offer</option>
+        </select>
+        <button type="submit">Filter</button>
     </form>
-    <ul id="search-results" class="hidden">
-    </ul>
     <p class="total-applications">Total applications: {{ count($applications) }}</p>
     <table>
         <tr>
