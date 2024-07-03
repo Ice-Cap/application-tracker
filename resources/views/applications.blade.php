@@ -2,6 +2,7 @@
     @php
         $response = $response ?? null;
         $search = $search ?? null;
+        $contacted = $contacted ?? null;
     @endphp
     <x-slot:title>
         All applications
@@ -27,6 +28,14 @@
             <option value="no interview" @selected($response === 'no interview')>No Interview</option>
             <option value="interview" @selected($response === 'interview')>Interview</option>
             <option value="job offer" @selected($response === 'job offer')>Job Offer</option>
+        </select>
+        <label>
+            Contacted
+        </label>
+        <select name="contacted">
+            <option value="any">Any</option>
+            <option value="yes" @selected($contacted === 'true')>Yes</option>
+            <option value="no" @selected($contacted === 'false')>No</option>
         </select>
         <button type="submit">Filter</button>
     </form>

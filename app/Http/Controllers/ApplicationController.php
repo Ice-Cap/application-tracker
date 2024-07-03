@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Application;
+use Illuminate\Database\Eloquent\Builder;
 
 class ApplicationController extends Controller
 {
@@ -14,28 +15,44 @@ class ApplicationController extends Controller
     {
         $search = $request->query('s', null);
         $response = $request->query('response', null);
-        if (!$search && !$response)
+        $contacted = $request->query('contacted', null);
+        if (!$search && !$response && !$contacted)
         {
             $applications = Application::all()->sortByDesc('id')->all();
             return view('applications', ['applications' => $applications]);
         }
 
-        $applications = Application::where('company', 'LIKE', "%$search%")
-            ->orderBy('id', 'desc');
+
+        $applications = Application::query();
 
         if ($response && $response !== 'any')
         {
             $applications = $applications->where('response', $response);
         }
 
-        if ($search)
+        if ($contacted && $contacted !== 'any')
         {
-            $applications = $applications->orWhere('title', 'LIKE', "%$search%");
+            $contacted = $contacted === 'yes' ? 'true' : 'false';
+            $applications = $applications->where('contacted', $contacted);
         }
 
+        if (!empty($search))
+        {
+            $applications = $applications->where(function (Builder $query) use ($search) {
+                $query->where('company', 'LIKE', "%$search%")
+                    ->orWhere('title', 'LIKE', "%$search%");
+            });
+        }
+
+        $applications = $applications->orderBy('id', 'desc');
         $applications = $applications->get();
 
-        return view('applications', ['applications' => $applications, 'search' => $search, 'response' => $response]);
+        return view('applications', [
+            'applications' => $applications,
+            'search' => $search,
+            'response' => $response,
+            'contacted' => $contacted
+        ]);
     }
 
     public function search(Request $request)
