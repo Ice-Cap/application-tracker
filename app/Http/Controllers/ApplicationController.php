@@ -159,6 +159,13 @@ class ApplicationController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $result = Application::destroy($id);
+
+        if (!$result)
+        {
+            return response('model not found', 404);
+        }
+
+        return redirect('/applications');
     }
 }

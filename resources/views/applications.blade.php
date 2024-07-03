@@ -50,6 +50,7 @@
             <th>Application Type</th>
             <th>Response</th>
             <th>Date Created</th>
+            <th>Options</th>
         </tr>
         @foreach ($applications as $application)
             @php
@@ -86,6 +87,13 @@
                 <td>{{ $application->application_type }}</td>
                 <td>{{ $application->response }}</td>
                 <td>{{ $application->created_at }}</td>
+                <td>
+                    <form action="/applications/{{ $application->id }}" method="post">
+                        @csrf
+                        @method('delete')
+                        <button type="submit" class="delete-btn">Delete</button>
+                    </form>
+                </td>
             </tr>
         @endforeach
     </table>
