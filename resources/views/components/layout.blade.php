@@ -13,6 +13,7 @@
             <ul>
                 <li><a href="/">Home</a></li>
                 <li><a href="/applications">View All</a></li>
+                <li><a href="/analytics">Analytics</a></li>
             </ul>
         </nav>
         <main>
