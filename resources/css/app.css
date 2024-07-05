@@ -173,14 +173,13 @@ form button[type="submit"] {
 .analytics-container {
     background-color: #fff9f5;
     border: 1px solid #f5e9e0;
-    padding: 10px;
     width: fit-content;
 }
 .analytics-container div {
     display: flex;
     justify-content: space-between;
     border-bottom: 1px solid #f5e9e0;
-    padding: 10px 0;
+    padding: 15px;
 }
 .analytics-container div:last-child {
     border: none;
