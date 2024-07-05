@@ -1,4 +1,7 @@
 <x-layout>
+    <x-slot:title>
+        Add application
+    </x-slot>
     <h1>Applications</h1>
     <h3>Add application</h3>
     <form action="/applications" method="post" autocomplete="off">

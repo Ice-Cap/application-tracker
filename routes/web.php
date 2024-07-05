@@ -7,5 +7,9 @@ Route::get('/', function () {
     return view('index');
 });
 
+Route::get('/analytics', function () {
+    return view('analytics');
+});
+
 Route::get('/applications/search', [ApplicationController::class, 'search']);
 Route::resource('applications', ApplicationController::class);
