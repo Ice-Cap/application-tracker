@@ -16,7 +16,9 @@ class ApplicationController extends Controller
         $search = $request->query('s', null);
         $response = $request->query('response', null);
         $contacted = $request->query('contacted', null);
-        if (!$search && !$response && !$contacted)
+        $coverLetter = $request->query('cover_letter', null);
+
+        if (!$search && !$response && !$contacted && !$coverLetter)
         {
             $applications = Application::all()->sortByDesc('id')->all();
             return view('applications', ['applications' => $applications]);
@@ -36,6 +38,12 @@ class ApplicationController extends Controller
             $applications = $applications->where('contacted', $contacted);
         }
 
+        if ($coverLetter && $coverLetter !== 'any')
+        {
+            $coverLetter = $coverLetter === 'yes' ? 'true' : 'false';
+            $applications = $applications->where('cover_letter', $coverLetter);
+        }
+
         if (!empty($search))
         {
             $applications = $applications->where(function (Builder $query) use ($search) {
@@ -51,7 +59,8 @@ class ApplicationController extends Controller
             'applications' => $applications,
             'search' => $search,
             'response' => $response,
-            'contacted' => $contacted
+            'contacted' => $contacted,
+            'coverLetter' => $coverLetter
         ]);
     }
 

@@ -3,6 +3,7 @@
         $response = $response ?? null;
         $search = $search ?? null;
         $contacted = $contacted ?? null;
+        $coverLetter = $coverLetter ?? null;
     @endphp
     <x-slot:title>
         All applications
@@ -36,6 +37,14 @@
             <option value="any">Any</option>
             <option value="yes" @selected($contacted === 'true')>Yes</option>
             <option value="no" @selected($contacted === 'false')>No</option>
+        </select>
+        <label>
+            Cover Letter
+        </label>
+        <select name="cover_letter">
+            <option value="any">Any</option>
+            <option value="yes" @selected($coverLetter === 'true')>Yes</option>
+            <option value="no" @selected($coverLetter === 'false')>No</option>
         </select>
         <button type="submit">Filter</button>
     </form>
