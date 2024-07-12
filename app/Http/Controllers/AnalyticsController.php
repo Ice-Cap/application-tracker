@@ -29,6 +29,10 @@ class AnalyticsController extends Controller
             return $value->response === 'job offer';
         })->count();
 
+        $totalResponses = $totalCollection->filter(function (object $value, int $key) {
+            return $value->response != 'none';
+        })->count();
+
         $totalContacted = $totalCollection->filter(function (object $value, int $key) {
             return $value->contacted === true;
         })->count();
@@ -37,6 +41,11 @@ class AnalyticsController extends Controller
             return $value->cover_letter === true;
         })->count();
 
+        $interviewPercentage = $total > 0 ? ($totalInterviews / $total) * 100 : 0;
+        $interviewPercentage = round($interviewPercentage, 2);
+        $responsePercentage = $total > 0 ? ($totalResponses / $total) * 100 : 0;
+        $responsePercentage = round($responsePercentage, 2);
+
         return view('analytics', [
             'total' => $total,
             'totalFull' => $totalFull,
@@ -44,7 +53,9 @@ class AnalyticsController extends Controller
             'totalInterviews' => $totalInterviews,
             'totalOffers' => $totalOffers,
             'totalContacted' => $totalContacted,
-            'totalCoverLetters' => $totalCoverLetters
+            'totalCoverLetters' => $totalCoverLetters,
+            'interviewPercentage' => "$interviewPercentage%",
+            'responsePercentage' => "$responsePercentage%"
         ]);
     }
 }

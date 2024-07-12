@@ -12,7 +12,7 @@ class Analytic extends Component
      * Create a new component instance.
      */
     public function __construct(
-        public int $value,
+        public int|string $value,
         public string $label
     ) {}
 
